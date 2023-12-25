@@ -26,6 +26,10 @@ export class BookService {
     return this.bookModel.findById(id, projection);
   }
 
+  getLazyBookList(): Promise<Book[]> {
+    return this.bookModel.find({}, { _id: 1 });
+  }
+
   deleteBook(id: string) {
     return this.bookModel.findByIdAndDelete(id);
   }

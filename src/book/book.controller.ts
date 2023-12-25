@@ -55,6 +55,16 @@ export class BookController {
     }
   }
 
+  @Get('lazy')
+  // @UseGuards(AuthGuard)
+  getLazyList() {
+    try {
+      return this.service.getLazyBookList();
+    } catch (e) {
+      errorHandler(e);
+    }
+  }
+
   @Get(':id')
   @UseGuards(AuthGuard)
   getBook(@Param('id') id: string) {
